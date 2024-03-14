@@ -1,11 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Proyecto M1</h1>
-</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Página Personal</title>
+    <link rel="stylesheet" href="../PM1-antonelladeff/styles/styles.css" />
+  <link rel="stylesheet" href="../PM1-antonelladeff/styles/reset.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Defilippi Maria Antonella</h1>
+    </header>
+    <main>
+      <section id="sobre-mi">
+        <h2>Sobre Mi</h2>
+        <div class="personal">
+          <img src="./assets/foto-personal-.jpg" alt="Mi foto" />
+          <p>
+            ¡Hola! Soy Defilippi Maria Antonella. Me apasiona el desarrollo web
+            y la creación de experiencias digitales que sean tanto atractivas
+            como funcionales. Cuando no estoy programando, me encanta explorar
+            nuevas tecnologías y aprender sobre diseño de interfaces de usuario.
+            ¡Bienvenido a mi página personal!
+          </p>
+        </div>
+      </section>
+      <section id="mis-tecnologias">
+        <h2>Mis Tecnologías Favoritas</h2>
+        <div class="tarjeta">
+          <h2>Html</h2>
+          <img src="./assets/Image20240308163700.png" alt="Tecnología 1" />
+        </div>
+        <div class="tarjeta">
+          <h2>Css</h2>
+          <img src="./assets/Image20240308163641.png" alt="Tecnología 2" />
+        </div>
+        <div class="tarjeta">
+          <h2>Javascript</h2>
+          <img src="./assets/Image20240308163603.png" alt="Tecnología 3" />
+        </div>
+      </section>
+         <main>
+        <section id="mis-actividades">
+            <h2>Mis Actividades Favoritas</h2>
+            <div id="actividades-container"></div>
+            <div id="formulario-actividades">
+                <form id="formulario">
+                    <input type="text" id="titulo" placeholder="Título" required />
+                    <input type="text" id="descripcion" placeholder="Descripción" required />
+                    <input type="url" id="imagenURL" placeholder="URL de la Imagen" required />
+                    <button type="button" id="agregarActividadButton">
+                        Agregar Actividad
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Mi Página Personal</p>
+    </footer>
+
+    <script src="./scripts/index.js"></script>
+  </body>
 </html>

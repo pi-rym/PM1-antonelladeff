@@ -1,0 +1,62 @@
+/* Box-sizing reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Margin and padding reset */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+blockquote,
+dl,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+/* Typography reset */
+body,
+button,
+input,
+select,
+textarea {
+    font-family: Arial, sans-serif;
+}
+
+/* Remove list styles */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Remove anchor styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Remove default button styles */
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Remove default form styles */
+input,
+select,
+textarea {
+    border: none;
+}
+
+/* Additional resets as needed */
