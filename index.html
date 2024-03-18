@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mi Página Personal</title>
-    <link rel="stylesheet" href="../PM1-antonelladeff/styles/styles.css" />
-  <link rel="stylesheet" href="../PM1-antonelladeff/styles/reset.css" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
     <header>
@@ -40,26 +40,33 @@
           <img src="./assets/Image20240308163603.png" alt="Tecnología 3" />
         </div>
       </section>
-         <main>
-        <section id="mis-actividades">
-            <h2>Mis Actividades Favoritas</h2>
-            <div id="actividades-container"></div>
-            <div id="formulario-actividades">
-                <form id="formulario">
-                    <input type="text" id="titulo" placeholder="Título" required />
-                    <input type="text" id="descripcion" placeholder="Descripción" required />
-                    <input type="url" id="imagenURL" placeholder="URL de la Imagen" required />
-                    <button type="button" id="agregarActividadButton">
-                        Agregar Actividad
-                    </button>
-                </form>
-            </div>
-        </section>
+      <section id="favorite-activities">
+        <h2>Mis Actividades Favoritas</h2>
+        <form id="formulario">
+          <input type="text" id="input-title" placeholder="Título" required />
+          <input
+            type="text"
+            id="input-description"
+            placeholder="Descripción"
+            required
+          />
+          <input
+            type="url"
+            id="input-img-url"
+            placeholder="URL de la Imagen"
+            required
+          />
+          <button type="submit" id="agregarActividadButton">
+            Agregar Actividad
+          </button>
+        </form>
+        <!-- Contenedor para las actividades creadas -->
+        <div id="container-activities"></div>
+      </section>
     </main>
     <footer>
       <p>&copy; 2024 Mi Página Personal</p>
     </footer>
-
     <script src="./scripts/index.js"></script>
   </body>
 </html>

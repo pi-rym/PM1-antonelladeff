@@ -1,45 +1,123 @@
 // Definición de la clase Activity
 class Activity {
-    constructor(id, title, description, imgUrl) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.imgUrl = imgUrl;
-    }
+  constructor(id, title, description, imgUrl) {
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.imgUrl = imgUrl;
+  }
 }
 
 // Definición de la clase Repository
 class Repository {
-    constructor() {
-        this.activities = [];
-    }
+  constructor() {
+    this.activities = [];
+    this.id = 0;
+  }
 
-    getAllActivities() {
-        return this.activities;
-    }
+  getAllActivities() {
+    return this.activities;
+  }
 
-    createActivity(id, title, description, imgUrl) {
-        const newActivity = new Activity(id, title, description, imgUrl);
-        this.activities.push(newActivity);
+createActivity(tilte, description, imgUrl){
+        const id = this.id++;
+        const activity = new Activity (id, tilte, description, imgUrl)
+        this.activities.push(activity)
     }
+  // Método para eliminar una actividad por su id
+  deleteActivity(id) {
+    id = parseInt(id);
+      console.log (id)
+    this.activities = this.activities.filter(activity => activity.id !== id);
 
-    // Método para eliminar una actividad por su id
-    deleteActivity(id) {
-        this.activities = this.activities.filter(activity => activity.id !== id);
-    }
+  }
 }
 
-const activity1 = new Activity(1, "Salir a merendar comida vegana", "Es muy sana y liviana la comida", "https://www.cronicanorte.es/wp-content/uploads/2015/02/comida-familia-comer.png");
-const activity2 = new Activity(2, "Salir a correr, te hace una vida saludable", "Correr es una excelente actividad física que beneficia tu salud", "https://www.marathonranking.com/wp-content/uploads/2021/12/beneficios-correr-1.jpg");
-const activity3 = new Activity(3, "Leer un libro en el parque", "Disfruta de la naturaleza mientras te sumerges en una buena lectura", "https://www.pexels.com/photo/woman-in-white-dress-reading-book-4171557/");
-const activity4 = new Activity(4, "Cocinar una nueva receta", "Experimenta en la cocina y prepara algo delicioso", "https://www.pexels.com/photo/selective-focus-photo-of-cooked-food-1099680/");
-const activity5 = new Activity(5, "Hacer ejercicio en casa", "Sigue una rutina de ejercicio en casa para mantenerte activo", "https://www.pexels.com/photo/woman-in-white-shirt-doing-yoga-4587775/");
+const repository = new Repository();
+  
+function handlerDeleteButton(event) {
+  const activityId =event.target.id
+    repository.deleteActivity(activityId);
+  console.log (activityId)
+  convertAllActivities();
+ }
 
-// Comprobar que las actividades se han creado correctamente
-console.log(activity1);
-console.log(activity2);
-console.log(activity3);
-console.log(activity4);
-console.log(activity5);
+// Función para convertir una instancia de Activity en elemento HTML
+function createHTMLActivity(activity) {
+  const { id, title, description, imgUrl } = activity;
+
+  const htmlTitle = document.createElement('h3');
+  htmlTitle.innerHTML = title;
+  htmlTitle.classList.add('title-class');
+
+  const htmlDescription = document.createElement('p');
+  htmlDescription.innerHTML = description;
+  htmlDescription.classList.add('description-class');
+
+  const htmlImage = document.createElement('img');
+  htmlImage.src = imgUrl;
+  htmlImage.classList.add('image-class');
+
+  const buttonHtml = document.createElement('button');
+  buttonHtml.id = id; 
+  buttonHtml.innerHTML = "Borrar";
+
+  buttonHtml.addEventListener("click", handlerDeleteButton);
+
+  const containerHtml = document.createElement('div');
+  containerHtml.appendChild(htmlTitle);
+  containerHtml.appendChild(htmlDescription);
+  containerHtml.appendChild(htmlImage);
+  containerHtml.appendChild(buttonHtml);
+  containerHtml.classList.add('card');
+  containerHtml.id = "activity-card " + id;
+
+  return containerHtml;
+}
+
+function convertAllActivities() {
+  const containerActivities = document.getElementById("container-activities");
+  containerActivities.innerHTML = '';
+
+  const activities = repository.getAllActivities();
+  const htmlActivities = activities.map((activity) => createHTMLActivity(activity));
+
+  htmlActivities.forEach(activityHTML => { 
+    containerActivities.appendChild(activityHTML);
+  });
+}
+
+function handlerButton(event) {
+  event.preventDefault();
+
+  const titleInput = document.getElementById('input-title');
+  const descriptionInput = document.getElementById('input-description');
+  const imageUrlInput = document.getElementById('input-img-url');
+
+  const titleValue = titleInput.value;
+  const descriptionValue = descriptionInput.value;
+  const imgUrlValue = imageUrlInput.value;
+
+  if (!titleValue || !descriptionValue || !imgUrlValue) {
+    alert('Por favor, complete todos los campos');
+    return;
+  }
+
+  repository.createActivity(titleValue, descriptionValue, imgUrlValue);
+  convertAllActivities();
+
+  // Limpiar los campos del formulario
+  titleInput.value = '';
+  descriptionInput.value = '';
+  imageUrlInput.value = '';
+}
 
 
+const agregar = document.getElementById("agregarActividadButton")
+agregar.addEventListener("click", handlerButton)
+
+
+module.exports={
+    Activity,
+    Repository,
+}
