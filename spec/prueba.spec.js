@@ -1,17 +1,18 @@
 const { Repository, Activity } = require("../scripts/index");
 
-describe("Repository", function () {
-  let repository;
+describe("Activity", function () {
+    // Prueba para verificar si Activity tiene una función constructora
+    it("tiene una función constructora", function () {
+        expect(typeof Activity.prototype.constructor).toBe("function");
+    });
 
-  beforeEach(function() {
-    repository = new Repository();
-  });
-
-  it("debería inicializarse con una lista de actividades vacía", function() {
-    expect(repository.activities.length).toEqual(0);
-  });
-
-  it("debería inicializarse con id igual a 0", function() {
-    expect(repository.id).toEqual(0);
-  });
+    // Prueba para verificar la inicialización de datos en la instancia de Activity
+    it("inicialización de datos", function () {
+        const activity = new Activity(1, "title", "description", "imgUrl");
+        expect(activity.id).toBe(1);
+        expect(activity.title).toBe("title");
+        expect(activity.description).toBe("description");
+        expect(activity.imgUrl).toBe("imgUrl");
+    });
 });
+
