@@ -12,7 +12,15 @@ describe("Activity", function () {
         expect(activity.id).toBe(1);
         expect(activity.title).toBe("title");
         expect(activity.description).toBe("description");
-        expect(activity.imgUrl).toBe("imgUrl");
+        expect(activity.imgUrl).toBe("imgUrl"); 
+   
     });
+ 
+    // Prueba repositori debe estar definido
+    it("repository debe ser una clase", function () {
+    expect(Activity).toBeDefined();
+    expect(typeof Repository.prototype.constructor).toBe("function");
+  });
 });
+ 
 

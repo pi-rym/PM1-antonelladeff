@@ -179,10 +179,9 @@ section {
         
 }
 
-
 /* Estilos CSS para las tarjetas de actividad */
 .card {
-    max-width: 350px;
+    max-width: 300px;
     margin: 0 auto 20px;
     border: 1px solid #ccc;
     border-radius: 12px;
@@ -197,11 +196,11 @@ section {
 }
 
 #container-activities {
-    margin-top: 20px;
+    margin-top: 25px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-   
+    grid-template-columns: repeat(4, 1fr);
+    align-items: flex-start;
+    padding-top: 20px;
 }
 
 /* Estilos para el botón de eliminación */
@@ -214,6 +213,9 @@ section {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 100%;
+    display: block;
+    
 }
 
 .delete-button:hover {

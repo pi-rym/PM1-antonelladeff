@@ -45,7 +45,7 @@ function handlerDeleteButton(event) {
 if(typeof document !== 'undefined') {
   function createHTMLActivity(activity) {
     const { id, title, description, imgUrl } = activity;
-
+    const containerHtml = document.createElement('div');
     const htmlTitle = document.createElement('h3');
     htmlTitle.innerHTML = title;
     htmlTitle.classList.add('title-class');
@@ -65,7 +65,6 @@ if(typeof document !== 'undefined') {
 
     buttonHtml.addEventListener("click", handlerDeleteButton);
 
-    const containerHtml = document.createElement('div');
     containerHtml.appendChild(htmlTitle);
     containerHtml.appendChild(htmlDescription);
     containerHtml.appendChild(htmlImage);
